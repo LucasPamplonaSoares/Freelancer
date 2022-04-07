@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Jobs
 from django.http import HttpResponse
+from datetime import datetime
 
 def encontrar_jobs(request):
     if request.method == "GET":
