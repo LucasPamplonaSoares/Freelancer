@@ -142,4 +142,3 @@ constants.WARNING: 'alert-warning',
 # EMAIL
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
