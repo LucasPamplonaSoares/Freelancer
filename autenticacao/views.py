@@ -38,23 +38,19 @@ def cadastro(request):
 
 
 def logar(request):
-    if request.method == 'GET':
-        if request.user.is_authenticated:
-            return redirect('/plataforma')
-
+    if request.method == "GET":
         return render(request, 'logar.html')
-    elif request.method == 'POST':
+    elif request.method == "POST":
         username = request.POST.get('username')
         senha = request.POST.get('password')
-
         usuario = auth.authenticate(username=username, password=senha)
+    if not usuario:
+        messages.add_message(request, constants.ERROR, 'Username ou senha inválidos')
+        return redirect('/auth/logar')
+    else:
+        auth.login(request, usuario)
+        return redirect('/')
 
-        if not usuario:
-            messages.add_message(request, constants.ERROR, 'Username ou senha invalidos')
-            return redirect('/auth/logar')
-        else:
-            auth.login(request, usuario)
-            return redirect('/plataforma')
 
         return HttpResponse('rescebido')
         
