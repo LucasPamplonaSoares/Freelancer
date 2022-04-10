@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Jobs
 from django.http import HttpResponse
 from datetime import datetime
@@ -41,3 +41,11 @@ def encontrar_jobs(request):
         else:
             jobs = Jobs.objects.filter(reservado=False)
         return render(request, 'encontrar_jobs.html', {'jobs': jobs})
+
+def aceitar_job(request, id):
+    job = Jobs.objects.get(id=id)
+    job.profissional = request.user
+    job.reservado = True
+    job.save()
+    
+    return redirect('/jobs/encontrar_jobs')
