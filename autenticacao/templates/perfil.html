@@ -67,7 +67,8 @@
                     {% if job.status == 'AA'%}
                     <span class="badge badge-info">Aguardando aprovação</span>
                     {% elif job.status == 'C' %}
-                    <span class="badge badge-primary">Em criação</span>
+                    <button class="badge badge-primary" data-toggle="modal" data-target="#modal-job-{{job.id}}">Em
+                        criação</button>
 
                     {% else %}
                     <span class="badge badge-success">Finalizado</span>
@@ -105,9 +106,10 @@
                             <p>{{job.prazo_entrega}}</p>
 
                             <hr style="border-color: yellow">
-                            <form>
+                            <form action="{% url 'enviar_projeto' %}" method="POST" enctype="multipart/form-data">
 
-                                <input type="file" class="form-control" placeholder="Enviar arquivos">
+                                <input type="file" class="form-control" placeholder="Enviar arquivos", name="file">
+                                <input type="hidden" value="{{job.id}}" name="id">
                                 <br>
                                 <input type="submit" value="Enviar" class="btn btn-success btn-lg">
 
