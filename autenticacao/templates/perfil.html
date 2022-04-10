@@ -52,13 +52,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row"><img width="100px" src="/media/referencias/AULA_01_1.png"></th>
-                    <td>a</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>x</td>
-                </tr>
+                {% for job in jobs %}
+    <tr>
+        <th scope="row"><img width="100px" src="{{job.referencias.all.0}}"></th>
+        <td>{{job.titulo}}</td>
+        <td>{{job.categoria}}</td>
+        <td>{% if job.categoria == 'D'%}
+                Design
+            {% else %}
+                Edição de vídeo
+            {% endif%}
+        </td>
+        <td>
+            {% if job.status == 'AA'%}
+               <span class="badge badge-info">Aguardando aprovação</span>
+            {% elif job.status == 'C' %}
+                <span class="badge badge-primary">Em criação</span>
+
+            {% else %}
+                <span class="badge badge-success">Finalizado</span>
+            {% endif %}
+        </td>
+    </tr>
+{% endfor %}
                
             </tbody>
         </table>
