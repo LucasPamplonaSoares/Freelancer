@@ -47,5 +47,9 @@ def aceitar_job(request, id):
     job.profissional = request.user
     job.reservado = True
     job.save()
-    
+
     return redirect('/jobs/encontrar_jobs')
+
+def perfil(request):
+    if request.method == "GET":
+        return render(request, 'perfil.html')
