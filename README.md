@@ -1,5 +1,5 @@
 # PYSTACK WEEK 
-## Programa realizado na Semana PYSTACK WEEK 3.0 com a linguagem Python juntamente com o framework Django.
+## Programa realizado com a linguagem Python juntamente com o framework Django.
 
 ![image](https://user-images.githubusercontent.com/69314618/162305087-28d154a8-c25a-4702-a763-35d764722c96.png)
 
